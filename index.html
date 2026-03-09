@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lets adopt an orphan dog!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --cream: #FDF6EC;
+        --brown: #5C3D2E;
+        --terracotta: #C4622D;
+        --amber: #E8973A;
+        --sage: #7A9E7E;
+        --paw: #F2C48D;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        background-color: var(--cream);
+        font-family: 'Nunito', sans-serif;
+        color: var(--brown);
+      }
+
+      #hero-image {
+        width: 100%;
+        height: 460px;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.75) saturate(0.9);
+      }
+
+      #main-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.6rem;
+        text-align: center;
+        margin: 48px auto 0;
+        color: var(--brown);
+        position: relative;
+      }
+      #main-heading::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: var(--terracotta);
+        border-radius: 2px;
+        margin: 12px auto 0;
+      }
+
+      #intro-paragraph {
+        max-width: 740px;
+        margin: 32px auto 0;
+        padding: 0 24px;
+        line-height: 1.85;
+        font-size: 1.05rem;
+        color: #6B4C38;
+        text-align: center;
+      }
+      #intro-paragraph div { margin-bottom: 10px; }
+
+      #list-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.6rem;
+        text-align: center;
+        margin: 56px auto 20px;
+        color: var(--brown);
+      }
+
+      #dog-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        padding: 0 24px;
+        margin-bottom: 56px;
+      }
+      #dog-list li {
+        background: var(--paw);
+        color: var(--brown);
+        font-weight: 700;
+        padding: 8px 22px;
+        border-radius: 50px;
+        font-size: 0.92rem;
+        letter-spacing: 0.04em;
+      }
+
+      #dog-table {
+        width: 90%;
+        max-width: 960px;
+        margin: 0 auto 72px;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(92,61,46,0.13);
+        background: #FFFAF3;
+      }
+
+      #dog-table tr:first-child th {
+        background: var(--terracotta);
+        color: #fff;
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 18px 20px;
+        text-align: left;
+        letter-spacing: 0.05em;
+      }
+
+      #dog-table tr:not(:first-child) {
+        border-bottom: 1px solid #EDE0CF;
+        transition: background 0.2s ease;
+      }
+      #dog-table tr:not(:first-child):hover {
+        background: #FFF3E2;
+      }
+      #dog-table tr:not(:first-child) th {
+        padding: 20px 20px;
+        font-weight: 700;
+        font-size: 1rem;
+        vertical-align: middle;
+        text-align: left;
+        color: var(--brown);
+        border: none;
+      }
+
+      #dog-table tr:not(:first-child) th:nth-child(1) {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.15rem;
+        color: var(--terracotta);
+        min-width: 100px;
+      }
+
+      #dog-table tr:not(:first-child) th:nth-child(2) img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid var(--paw);
+        display: block;
+      }
+
+      #dog-table tr:not(:first-child) th:nth-child(3) {
+        font-weight: 400;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: #7A5C48;
+        max-width: 340px;
+      }
+      #dog-table tr:not(:first-child) th:nth-child(3) div {
+        margin-bottom: 4px;
+      }
+
+      #dog-table tr:not(:first-child) th:nth-child(4) {
+        text-align: center;
+      }
+      #dog-table tr:not(:first-child) th:nth-child(4)::after {
+        content: ' yrs';
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: #B08870;
+      }
+
+      #dog-table tr:not(:first-child) th:nth-child(5) {
+        text-transform: capitalize;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+      }
+
+      #adopt-link {
+        display: block;
+        width: fit-content;
+        margin: 0 auto 64px;
+        background: var(--terracotta);
+        color: #fff;
+        text-decoration: none;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 18px 48px;
+        border-radius: 50px;
+        box-shadow: 0 6px 24px rgba(196,98,45,0.35);
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+      #adopt-link:hover {
+        background: var(--amber);
+        transform: scale(1.05);
+      }
+
+      #footer-image {
+        width: 100%;
+        max-height: 380px;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.65) saturate(0.85);
+      }
+
+      /* ── FOOTER BAR ── */
+      #footer-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 36px;
+        background: var(--brown);
+        color: var(--paw);
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      #student-info {
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--paw);
+        line-height: 1.6;
+      }
+
+      #student-info span {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: #D4B896;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      #claude-link {
+        color: var(--amber);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        border: 2px solid var(--amber);
+        padding: 8px 20px;
+        border-radius: 50px;
+        transition: background 0.2s ease, color 0.2s ease;
+        white-space: nowrap;
+      }
+      #claude-link:hover {
+        background: var(--amber);
+        color: var(--brown);
+      }
+    </style>
+  </head>
+  <body>
+
+    <img id="hero-image" src="image/01.png" width="1420">
+
+    <h1 id="main-heading">Adoption needed</h1>
+
+    <p id="intro-paragraph">
+      <div>Adopting a dog means giving a second chance to a life that only asks for love.</div>
+      <div>Many dogs in shelters are there not because they are bad, but because they were unlucky.</div>
+      <div>When you adopt, you don't just gain a pet—you gain a loyal friend who will greet you with excitement every day, comfort you in hard times, and fill your home with warmth.</div>
+      <div>In return for food, care, and kindness, a dog gives unconditional love, something truly priceless. By adopting, you're not only changing a dog's life—you're enriching your own. 🐶❤️</div>
+    </p>
+
+    <h3 id="list-heading">List of Dogs</h3>
+
+    <ul id="dog-list">
+      <li>Nickey</li>
+      <li>Minnie</li>
+      <li>Donald</li>
+      <li>Goofy ahh</li>
+    </ul>
+
+    <table id="dog-table">
+      <tr>
+        <th colspan="2">List of dogs to adopt</th>
+        <th>Details</th>
+        <th>age</th>
+        <th>colour</th>
+      </tr>
+      <tr>
+        <th>Nickey</th>
+        <th><img src="image/02.png" width="80"></th>
+        <th>
+          <div>Nickey is a calm and affectionate black Labrador mix who loves relaxing beside his favorite humans.</div>
+          <div>He enjoys gentle walks, belly rubs, and quiet afternoons.</div>
+          <div>Nickey is very loyal and would make a wonderful companion for a family looking for a sweet and dependable dog.</div>
+        </th>
+        <th>10</th>
+        <th>BLACK</th>
+      </tr>
+      <tr>
+        <th>Minnie</th>
+        <th><img src="image/03.png" width="80"></th>
+        <th>
+          <div>Minnie is a playful and energetic fluffy pup with a bright personality.</div>
+          <div>She loves running around in open spaces and meeting new people.</div>
+          <div>Her cheerful attitude and adorable look make her the center of attention wherever she goes.</div>
+        </th>
+        <th>5</th>
+        <th>pink</th>
+      </tr>
+      <tr>
+        <th>Donald</th>
+        <th><img src="image/04.png" width="80"></th>
+        <th>
+          <div>Donald is a curious and adventurous dog who enjoys exploring and staying active.</div>
+          <div>He loves outdoor activities like jogging and hiking.</div>
+          <div>Donald is intelligent and quick to learn, making him a great companion for someone who enjoys an active lifestyle.</div>
+        </th>
+        <th>11</th>
+        <th>blue</th>
+      </tr>
+      <tr>
+        <th>Goofy ahh</th>
+        <th><img src="image/05.png" width="80"></th>
+        <th>
+          <div>Goofy ahh lives up to his name — he is funny, playful, and always ready to make people laugh.</div>
+          <div>With his silly expressions and energetic personality, he brings joy wherever he goes.</div>
+          <div>He loves attention, treats, and playing with toys.</div>
+        </th>
+        <th>67</th>
+        <th>grey</th>
+      </tr>
+    </table>
+
+    <a id="adopt-link" href="adoptme.html">CLICK LINK HERE TO REGISTER ADOPTATION</a>
+
+    <img id="footer-image" src="image/06.png" width="1420">
+
+    <div id="footer-bar">
+      <div id="student-info">
+        <span>Student ID</span>
+        6833175621 Pongtawan Klysubun
+      </div>
+    </div>
+
+  </body>
+</html>
