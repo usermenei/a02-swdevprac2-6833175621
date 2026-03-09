@@ -1,173 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Dog Adoption Interest Form</title>
-  <style>
-    body {
-      font-family: Georgia, serif;
-      background-color: #f9f6f1;
-      color: #333;
-      max-width: 620px;
-      margin: 48px auto;
-      padding: 0 24px;
-    }
+  <head>
+    <title>Dog Adoption Interest Form</title>
+    <link rel="stylesheet" href="adoptme.css">
+  </head>
+  <body>
 
-    h1 {
-      font-size: 1.6rem;
-      border-bottom: 2px solid #8B5E3C;
-      padding-bottom: 10px;
-      margin-bottom: 28px;
-      color: #5C3D2E;
-    }
+    <h1>Dog Adoption Interest Form</h1>
+    <form name="adoption" action="" method="post" onsubmit="return validateForm()">
+      <h3>Part 1: Personal Information</h3>
 
-    h3 {
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #8B5E3C;
-      margin: 28px 0 16px;
-      border-left: 4px solid #C4622D;
-      padding-left: 10px;
-    }
+      <label for="full-name">Full Name</label>
+      <input type="text" id="full-name" name="full-name">
+      <span id="fn-error" class="error-msg"></span>      <!-- ← added -->
 
-    label {
-      font-size: 0.9rem;
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-    }
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone">
+      <span id="tel-error" class="error-msg"></span>     <!-- ← added -->
 
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"],
-    input[type="number"],
-    textarea,
-    select {
-      width: 100%;
-      padding: 9px 12px;
-      margin-bottom: 18px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-family: Georgia, serif;
-      font-size: 0.9rem;
-      background: #fff;
-      box-sizing: border-box;
-    }
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email">
 
-    input:focus,
-    textarea:focus,
-    select:focus {
-      outline: none;
-      border-color: #C4622D;
-    }
+      <h3>Part 2: Living Environment</h3>
 
-    textarea { resize: vertical; }
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="4"></textarea>
 
-    /* Radio buttons */
-    .radio-group { margin-bottom: 18px; }
-    .radio-group label {
-      display: inline;
-      font-weight: normal;
-      margin-left: 6px;
-      margin-right: 18px;
-    }
-    .radio-group input[type="radio"] { width: auto; }
+      <label for="housing-type">Type of Residence</label>
+      <select id="housing-type" name="housing-type">
+          <option value="" disabled selected>-- Please select --</option>
+          <option value="garden-house">Garden House</option>
+          <option value="single-house">Single House</option>
+          <option value="townhome">Townhome</option>
+          <option value="condo">Condominium / Dormitory</option>
+      </select>
 
-    /* Checkbox */
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 24px;
-      font-size: 0.88rem;
-      color: #555;
-    }
-    .checkbox-group input[type="checkbox"] {
-      width: auto;
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-    .checkbox-group label {
-      font-weight: normal;
-      margin: 0;
-    }
+      <label>Dog Keeping</label>
+      <div class="radio-group">
+          <input type="radio" id="indoor" name="dog-location" value="indoor">
+          <label for="indoor">Keep dog inside the house</label>
+          <input type="radio" id="outdoor" name="dog-location" value="outdoor">
+          <label for="outdoor">Keep dog outside the house</label>
+      </div>
 
-    input[type="submit"] {
-      background-color: #C4622D;
-      color: #fff;
-      border: none;
-      padding: 11px 32px;
-      font-family: Georgia, serif;
-      font-size: 0.95rem;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    input[type="submit"]:hover {
-      background-color: #a84e22;
-    }
+      <label for="pet-count">Number of Current Pets</label>
+      <input type="number" id="pet-count" name="pet-count" min="0">
 
-    .footer-credit {
-      text-align: center;
-      margin-top: 48px;
-      padding-top: 16px;
-      border-top: 1px solid #ddd;
-      font-size: 0.82rem;
-      color: #999;
-    }
-  </style>
-</head>
-<body>
+      <div class="checkbox-group">
+          <input type="checkbox" id="consent" name="consent">
+          <label for="consent">Submitting this form is an expression of interest only and does not guarantee dog adoption.</label>
+      </div>
 
-  <h1>Dog Adoption Interest Form</h1>
-
-  <form action="" method="post">
-
-    <h3>Part 1: Personal Information</h3>
-
-    <label for="full-name">Full Name</label>
-    <input type="text" id="full-name" name="full-name">
-
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" name="phone">
-
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email">
-
-    <h3>Part 2: Living Environment</h3>
-
-    <label for="address">Address</label>
-    <textarea id="address" name="address" rows="4"></textarea>
-
-    <label for="housing-type">Type of Residence</label>
-    <select id="housing-type" name="housing-type">
-      <option value="" disabled selected>-- Please select --</option>
-      <option value="garden-house">Garden House</option>
-      <option value="single-house">Single House</option>
-      <option value="townhome">Townhome</option>
-      <option value="condo">Condominium / Dormitory</option>
-    </select>
-
-    <label>Dog Keeping</label>
-    <div class="radio-group">
-      <input type="radio" id="indoor" name="dog-location" value="indoor">
-      <label for="indoor">Keep dog inside the house</label>
-      <input type="radio" id="outdoor" name="dog-location" value="outdoor">
-      <label for="outdoor">Keep dog outside the house</label>
-    </div>
-
-    <label for="pet-count">Number of Current Pets</label>
-    <input type="number" id="pet-count" name="pet-count" min="0">
-
-    <div class="checkbox-group">
-      <input type="checkbox" id="consent" name="consent">
-      <label for="consent">Submitting this form is an expression of interest only and does not guarantee dog adoption.</label>
-    </div>
-
-    <input type="submit" value="Submit Form">
-
+      <input type="submit" value="Submit Form">
   </form>
 
-  <p class="footer-credit">6833175621 Pongtawan Klysubun</p>
-
-</body>
+    <p class="footer-credit">6833175621 Pongtawan Klysubun</p>
+    <script src = "adoptme.js"></script>
+  </body>
 </html>
